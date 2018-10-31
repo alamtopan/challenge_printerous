@@ -14,3 +14,19 @@ bundle exec rake db:migrate
 bundle exec rake db:seed
 
 rails s
+
+
+YOU CAN LOGIN WITH ACCOUNT ADMIN TO MANAGE :
+
+- Account Manager
+
+- Organization
+
+- Persons
+
+ACCOUNT ADMIN
+
+EMAIL : admin@gmail.com
+
+PASSWORD : 12345678
+
