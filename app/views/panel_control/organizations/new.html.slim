@@ -1,0 +1,11 @@
+section.content.full-page
+  .row
+    .col-md-12
+      .box.box-m
+        .box-header
+          b New Organization
+          hr
+        .box-body
+          = form_for @organization, url: panel_control_organizations_path, method: 'post' do |f|
+            = render 'form', f: f
+            = submit_tag "Submit", class: "btn btn-info"

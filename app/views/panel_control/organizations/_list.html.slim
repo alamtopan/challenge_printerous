@@ -1,0 +1,46 @@
+= link_to 'Create Organization', new_panel_control_organization_path, class: 'btn btn-info btn-sm pull-left'
+br
+.full.responsive-tabel
+  .responsive-content-tabel
+    table.table.table-hover.table-striped.table-bordered.tabel-width
+      thead
+        tr
+          th Logo
+          th Account Manager
+          th Organization Name
+          th Email
+          th Phone
+          th Website
+          th Created At
+          th width='120px' Action
+      tbody
+        - if @organizations.blank?
+          tr
+            td colspan="7"
+              p Data Blank!
+        - else
+          - @organizations.each do |resource|
+            tr
+              td
+                = image_tag resource.logo.url(:thumb), style: 'width:80px;'
+              td
+                = resource.try(:account_manager).try(:email)
+              td
+                = resource.name
+              td
+                = resource.email
+              td
+                = resource.phone
+              td
+                = resource.website
+              td
+                = resource.created_at.strftime("%I:%M %B, %d, %Y")
+              th.text-center
+                = link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, panel_control_organization_path(resource), method: 'delete', data: {confirm: "Are you sure to delete?"}, class: 'btn btn-default btn-xs'
+                | &nbsp;
+                = link_to '<i class="fa fa-wrench" aria-hidden="true"></i>'.html_safe, edit_panel_control_organization_path(resource), class: 'btn btn-default btn-xs'
+                | &nbsp;
+                = link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, panel_control_organization_path(resource), class: 'btn btn-default btn-xs'
+
+= paginate @organizations, remote: true
+

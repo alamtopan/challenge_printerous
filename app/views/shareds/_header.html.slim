@@ -1,0 +1,26 @@
+header.main-header
+  = link_to panel_control_dashboard_path, class: 'logo' do
+    span.logo-mini
+      b> APanel
+    span.logo-lg
+      b Admin Panel
+  nav.navbar.navbar-static-top role="navigation"
+    a.sidebar-toggle data-toggle="offcanvas" href="#" role="button"
+      span.sr-only Toggle navigation
+    .navbar-custom-menu
+      ul.nav.navbar-nav
+        li.dropdown.user.user-menu
+          a.dropdown-toggle data-toggle="dropdown" href="#"
+            = image_tag 'default.jpeg', class: 'user-image'
+            span.hidden-xs #{current_user.email}
+          ul.dropdown-menu
+            li.user-header
+              = image_tag 'default.jpeg', class: 'img-circle'
+              p
+                | #{current_user.email} - #{current_user.type}
+                small Since #{current_user.created_at}
+            li.user-footer
+              .pull-left
+                a.btn.btn-default.btn-flat href="#{edit_panel_control_admin_path(current_user)}" Edit Account
+              .pull-right
+                = link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default btn-flat'

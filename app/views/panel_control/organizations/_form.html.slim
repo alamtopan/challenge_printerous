@@ -1,0 +1,29 @@
+.row
+  .col-md-3
+    label Logo
+    br
+    = image_tag f.object.logo.url(:small), class: 'show-choice', style: 'width:250px;'
+    = f.file_field :logo, class: 'input-file'
+  .col-md-9
+    - if current_user.is_admin?
+      .col-md-12
+        .form-group
+          = f.label :account_manager_id
+          = f.select :account_manager_id, options_for_select(AccountManager.pluck(:email, :id), f.object.account_manager_id), {prompt: "Choice Account Manager"}, class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :name
+        = f.text_field :name, placeholder: "Enter name", class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :email
+        = f.email_field :email, placeholder: "Enter email", class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :phone
+        = f.text_field :phone, placeholder: "Enter phone", class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :website
+        = f.text_field :website, placeholder: "Enter website", class: 'form-control', required: true
+  

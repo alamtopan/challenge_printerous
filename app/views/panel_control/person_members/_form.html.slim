@@ -1,0 +1,25 @@
+- organizations = current_user.is_admin? ? Organization.all : AccountManager.find(current_user.id).organizations
+.row
+  .col-md-3
+    label Avatar
+    br
+    = image_tag f.object.avatar.url(:small), class: 'show-choice', style: 'width:250px;'
+    = f.file_field :avatar, class: 'input-file'
+  .col-md-9
+    .col-md-12
+      .form-group
+        = f.label :organization_id
+        = f.select :organization_id, options_for_select(organizations.pluck(:name, :id), f.object.organization_id), {prompt: "Choice Organization"}, class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :name
+        = f.text_field :name, placeholder: "Enter name", class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :email
+        = f.email_field :email, placeholder: "Enter email", class: 'form-control', required: true
+    .col-md-12
+      .form-group
+        = f.label :phone
+        = f.text_field :phone, placeholder: "Enter phone", class: 'form-control', required: true
+  

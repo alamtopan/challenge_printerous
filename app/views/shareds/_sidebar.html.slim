@@ -1,0 +1,45 @@
+aside.main-sidebar
+  section.sidebar
+    .user-panel
+      .pull-left.image
+        = image_tag 'default.jpeg', class: 'img-circle'
+      .pull-left.info
+        p #{current_user.email}
+        a href="#"
+          i.fa.fa-circle.text-success 
+          = 'Online'
+    ul.sidebar-menu
+      li.header MENU
+      li.active
+        = link_to '<i class="fa fa-globe"></i> Dashboard'.html_safe, panel_control_dashboard_path
+      - if current_user.is_admin?
+        li class="treeview #{active_sidebar?(:account_managers, :all)}"
+          a href="#"
+            i.fa.fa-list
+            span Data Account Manager
+            i.fa.fa-angle-left.pull-right
+          ul.treeview-menu
+            li
+              = link_to 'Create New'.html_safe, new_panel_control_account_manager_path
+            li
+              = link_to 'List', panel_control_account_managers_path
+      li class="treeview #{active_sidebar?(:organizations, :all)}"
+        a href="#"
+          i.fa.fa-list
+          span Data Organizations
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to 'Create New'.html_safe, new_panel_control_organization_path
+          li
+            = link_to 'List', panel_control_organizations_path
+      li class="treeview #{active_sidebar?(:person_members, :all)}"
+        a href="#"
+          i.fa.fa-list
+          span Data Persons
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to 'Create New'.html_safe, new_panel_control_person_member_path
+          li
+            = link_to 'List', panel_control_person_members_path

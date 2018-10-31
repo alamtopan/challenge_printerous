@@ -1,0 +1,29 @@
+= link_to 'Create Account Manager', new_panel_control_account_manager_path, class: 'btn btn-info btn-sm pull-left'
+br
+.full.responsive-tabel
+  .responsive-content-tabel
+    table.table.table-hover.table-striped.table-bordered.tabel-width
+      thead
+        tr
+          th Email
+          th Created At
+          th width='75px' Action
+      tbody
+        - if @account_managers.blank?
+          tr
+            td colspan="3"
+              p Data Blank!
+        - else
+          - @account_managers.each do |resource|
+            tr
+              td
+                = resource.email
+              td
+                = resource.created_at.strftime("%I:%M %B, %d, %Y")
+              th.text-center
+                = link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, panel_control_account_manager_path(resource), method: 'delete', data: {confirm: "Are you sure to delete?"}, class: 'btn btn-default btn-xs'
+                | &nbsp;
+                = link_to '<i class="fa fa-wrench" aria-hidden="true"></i>'.html_safe, edit_panel_control_account_manager_path(resource), class: 'btn btn-default btn-xs'
+
+= paginate @account_managers, remote: true
+

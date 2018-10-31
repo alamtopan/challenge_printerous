@@ -1,0 +1,56 @@
+section.content.full-page
+  .row
+    .col-md-12
+      .box.box-m
+        .box-header
+          b Detail Organization
+          hr
+        .box-body
+          .row
+            .col-md-3
+              label Logo
+              br
+              = image_tag @organization.logo.url(:small), class: 'show-choice', style: 'width:250px;'
+            .col-md-9
+              .col-md-12
+                .form-group
+                  label Account Manager:
+                  br
+                  = @organization.account_manager.email
+              .col-md-12
+                .form-group
+                  label Name:
+                  br
+                  = @organization.name
+              .col-md-12
+                .form-group
+                  label Email:
+                  br
+                  = @organization.email
+              .col-md-12
+                .form-group
+                  label Phone:
+                  br
+                  = @organization.phone
+              .col-md-12
+                .form-group
+                  label Website:
+                  br
+                  = @organization.website
+
+section.content.full-page
+  .row
+    .bg-white
+      .col-md-12.search
+        = form_for :search, url: panel_control_organization_path(params[:id]), method: 'get', html: {class: 'form-search', remote: true} do
+          .col-md-11.no-padding
+            = text_field_tag :key, params[:key], class: 'form-control pull-right radius-left', placeholder: 'Keywords'
+          .col-md-1.no-padding
+            = submit_tag :Search, class: 'btn btn-info', style:'width:100%;'
+  .row
+    .col-xs-12.top-plus
+      .box.box-m
+        .box-body.responsive-content-tabel
+          #table-lists
+            = render 'panel_control/person_members/list'
+            

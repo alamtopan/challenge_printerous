@@ -1,0 +1,15 @@
+section.content.full-page
+  .row
+    .bg-white
+      .col-md-12.search
+        = form_for :search, url: panel_control_account_managers_path, method: 'get', html: {class: 'form-search', remote: true} do
+          .col-md-11.no-padding
+            = text_field_tag :key, params[:key], class: 'form-control pull-right radius-left', placeholder: 'Keywords'
+          .col-md-1.no-padding
+            = submit_tag :Search, class: 'btn btn-info', style:'width:100%;'
+  .row
+    .col-xs-12.top-plus
+      .box.box-m
+        .box-body.responsive-content-tabel
+          #table-lists
+            = render 'list'

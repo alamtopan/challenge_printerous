@@ -1,0 +1,33 @@
+- if current_user.is_admin?
+  .row
+    .col-md-4.col-sm-6.col-xs-12
+      .info-box
+        span.info-box-icon.bg-aqua
+          i.fa.fa-user
+        .info-box-content
+          span.info-box-text AccountManagers
+          span.info-box-number
+            = @account_managers_count
+    .col-md-4.col-sm-6.col-xs-12
+      .info-box
+        span.info-box-icon.bg-red
+          i.fa.fa-users
+        .info-box-content
+          span.info-box-text Organizations
+          span.info-box-number
+            = @organizations_count
+    .col-md-4.col-sm-6.col-xs-12
+      .info-box
+        span.info-box-icon.bg-yellow
+          i.fa.fa-building
+        .info-box-content
+          span.info-box-text Persons
+          span.info-box-number
+            = @persons_count
+
+.row
+  .col-md-12
+    .box
+      .box-header
+        h1 align='center' Wellcome To Panel Control #{current_user.email}
+      .box-body style='height:100vh;'

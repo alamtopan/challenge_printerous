@@ -1,0 +1,8 @@
+section.home-page
+  .container
+    h1 Wellcome To!
+    = image_tag 'logo.png', class: 'logo'
+    br
+    .banner
+      = image_tag 'banner.jpg'
+    = link_to 'LOGIN NOW', new_user_session_path, class: 'btn btn-lg btn-success btn-login'

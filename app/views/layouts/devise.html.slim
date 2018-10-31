@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Access | ChallengePrinterous
+    = csrf_meta_tags
+    link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" 
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    section.page-devise
+      .container
+        .col-md-4.col-md-offset-4
+          .devise-body
+            = yield
+  = javascript_include_tag "https://code.jquery.com/jquery-3.3.1.js"
+  = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

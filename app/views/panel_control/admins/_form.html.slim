@@ -1,0 +1,13 @@
+.row
+  .col-md-12
+    .form-group
+      = f.label :email
+      = f.email_field :email, placeholder: "Enter email", class: 'form-control', required: true
+  .col-md-12
+    .form-group
+      = f.label :password
+      = f.password_field :password, placeholder: "Enter password", class: 'form-control'
+  .col-md-12
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, placeholder: "Enter password confirmation", class: 'form-control'

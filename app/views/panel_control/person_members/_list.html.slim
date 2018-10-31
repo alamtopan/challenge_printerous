@@ -1,0 +1,46 @@
+= link_to new_panel_control_person_member_path, class: 'btn btn-info btn-sm pull-left' do
+  i.fa.fa-user
+  | Create Person
+br
+.full.responsive-tabel
+  .responsive-content-tabel
+    table.table.table-hover.table-striped.table-bordered.tabel-width
+      thead
+        tr
+          th Avatar
+          th Organization Name
+          th Account Manager
+          th Name
+          th Email
+          th Phone
+          th Created At
+          th width='75px' Action
+      tbody
+        - if @person_members.blank?
+          tr
+            td colspan="8"
+              p Data Blank!
+        - else
+          - @person_members.each do |resource|
+            tr
+              td
+                = image_tag resource.avatar.url(:thumb), style: 'width:80px;'
+              td
+                = resource.try(:organization).try(:name)
+              td
+                = resource.try(:organization).try(:account_manager).try(:email)
+              td
+                = resource.name
+              td
+                = resource.email
+              td
+                = resource.phone
+              td
+                = resource.created_at.strftime("%I:%M %B, %d, %Y")
+              th.text-center
+                = link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, panel_control_person_member_path(resource), method: 'delete', data: {confirm: "Are you sure to delete?"}, class: 'btn btn-default btn-xs'
+                | &nbsp;
+                = link_to '<i class="fa fa-wrench" aria-hidden="true"></i>'.html_safe, edit_panel_control_person_member_path(resource), class: 'btn btn-default btn-xs'
+
+= paginate @person_members, remote: true
+

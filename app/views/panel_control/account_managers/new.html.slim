@@ -1,0 +1,11 @@
+section.content.full-page
+  .row
+    .col-md-12
+      .box.box-m
+        .box-header
+          b New Account Manager
+          hr
+        .box-body
+          = form_for @account_manager, url: panel_control_account_managers_path, method: 'post' do |f|
+            = render 'form', f: f
+            = submit_tag "Submit", class: "btn btn-info"
